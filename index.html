@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>        
+    <meta charset="utf-8">  
+	<link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Playfair+Display&family=Ubuntu:wght@300;400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css">
+    <title>HW18-js-async-await</title>
+  </head>
+<body>		
+<div>HW18-js-async-await</div>
+
+<div>
+1. Создайте на вашем github репозиторий с именем HW18-js-async-await. Все результаты нужно запушить в ваш репозиторий и прикрепить ссылку на hillel портале.<br>
+2. Создайте index.html в котором подключите js script.<br>
+3. Напишите функцию timeout(data, ms), которая возвращает новый промис, переходящий в состояние "resolved" через ms миллисекунд и передает в резолв данные которые принимает через аргумент data. В реализации данной функции используем явные промисы.<br>
+<br>
+Пример использования:<br>
+<br>
+delay({name: "user"}, 1000).then((data) => console.log("Hello!", data))<br>
+<br>
+4. Используйте async / await. Необходимо организовать цепочку промисов внутри асинхронной функции getResult.<br>
+<br>
+	async function getResult() { тут должна быть цепочка вызовов }<br>
+  <br>
+4.1 Функции getUserInfo, getUserAvatar, getUserAdditionalInfo необходимо переписать в стиле async. Вместо setTimeout нужно использовать функцию delay которую написали в предыдущем задании (вызываеть ее нужно через async await).<br>
+​​4.2 Загрузить данные пользователя используем функцию getUserInfo.<br>
+4.3 Затем получить ссылку на аватар пользователя, для этого нужно использовать функцию getUserAvatar. Данная функция расширит и вернет обьект пользователя.<br>
+4.4 Затем получить дополнительную информацию по пользователю, для этого нужно использовать функцию getUserAdditionalInfo. Данная функция расширит и вернет обьект пользователя.<br>
+4.5 В конце вывести в консоль финальную версию полученного обьекта.<br>
+function getUserInfo() {<br>
+    return new Promise(function(resolve, reject) {<br>
+      setTimeout(() => resolve({ name: 'Vic', age: 21, id: 1 } ), 1000);<br>
+    });<br>
+  }<br>
+  function getUserAvatar(userInfo) {<br>
+    return new Promise(function(resolve, reject) {<br>
+      userInfo.avatar = 'https://previews.123rf.com/images/stockgiu/stockgiu1708/stockgiu170802061/83728179-avatar-sketch-of-a-funny-man-s-haed-with-sunglasses-and-hairstyle-design.jpg'<br>
+      setTimeout(() => resolve(userInfo), 1000);<br>
+    });<br>
+  }<br>
+  function getUserAdditionalInfo(userInfo) {<br>
+    return new Promise(function(resolve, reject) {<br>
+      userInfo.interests = ['sport', 'books'];<br>
+      setTimeout(() => resolve(userInfo), 1000);<br>
+    });<br>
+  }<br>
+  <br>
+  <br>
+Пример использования:<br>
+async function getResult() { <br>
+тут должна быть цепочка вызовов м<br>
+}<br>
+getResult();<br>
+
+<br>
+5. Используйте async / await. Необходимо добавить обработку ошибок. Ошибка должна быть выведена в консоль.<br>
+<br>
+async function getUser() {<br>
+    return { name: 'Vic', age: 21, id: 1 };<br>
+}<br>
+async function getInfo() {<br>
+    let user = await getUser();<br>
+    throw new Error('error');<br>
+}<br>
+<br>
+getInfo();<br>
+
+</div>
+
+  <script src="./main.js" defer></script>
+</body>
+</html>
