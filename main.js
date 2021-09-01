@@ -12,27 +12,27 @@ timeout({name: "user"}, 1000).then((data) => console.log("Hello! Task 3", data))
 console.log('----------Task 4----------')
 
 async function getResult() {
-    let result1 = await timeout(getUserInfo(), 1000);
-    let result2 = await timeout(getUserAvatar(result1), 2000);
-    let result3 = await timeout(getUserAdditionalInfo(result2), 3000);
+    let result1 = await getUserInfo();
+    let result2 = await getUserAvatar(result1);
+    let result3 = await getUserAdditionalInfo(result2);
     console.log('Result Task 4', result3);
-}
+};
 getResult();
 
 // // ================4.1 - 4.5======================================================
 
 async function getUserInfo() {
-    return ({ name: 'Vic', age: 21, id: 1 });
+    return timeout(({ name: 'Vic', age: 21, id: 1 }), 2000);
 };
 
-async function getUserAvatar(userInfo) {
+async function getUserAvatar(userInfo) {    
     userInfo.avatar = 'https://previews.123rf.com/images/stockgiu/stockgiu1708/stockgiu170802061/83728179-avatar-sketch-of-a-funny-man-s-haed-with-sunglasses-and-hairstyle-design.jpg';
-    return userInfo;
+    return timeout(userInfo, 3000);
 };
 
 async function getUserAdditionalInfo(userInfo) {
-    userInfo.interests = ['sport', 'books'];
-    return userInfo;
+    timeout(userInfo.interests = ['sport', 'books']);
+    return timeout(userInfo, 4000);
 }
 
 console.log('----------Task 5----------')
@@ -50,6 +50,106 @@ async function getInfo() {
     };
 };
 getInfo();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log('----------Task 3----------');
+
+// function timeout(data, ms) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             (resolve(data))
+//         }, ms)
+//     });
+// }
+// timeout({name: "user"}, 1000).then((data) => console.log("Hello! Task 3", data));
+
+// console.log('----------Task 4----------')
+
+// async function getResult() {
+//     let result1 = await timeout(getUserInfo(), 1000);
+//     let result2 = await timeout(getUserAvatar(result1), 2000);
+//     let result3 = await timeout(getUserAdditionalInfo(result2), 3000);
+//     console.log('Result Task 4', result3);
+// }
+// getResult();
+
+// // // ================4.1 - 4.5======================================================
+
+// async function getUserInfo() {
+//     return ({ name: 'Vic', age: 21, id: 1 });
+// };
+
+// async function getUserAvatar(userInfo) {
+//     userInfo.avatar = 'https://previews.123rf.com/images/stockgiu/stockgiu1708/stockgiu170802061/83728179-avatar-sketch-of-a-funny-man-s-haed-with-sunglasses-and-hairstyle-design.jpg';
+//     return userInfo;
+// };
+
+// async function getUserAdditionalInfo(userInfo) {
+//     userInfo.interests = ['sport', 'books'];
+//     return userInfo;
+// }
+
+// console.log('----------Task 5----------')
+
+// async function getUser() {
+//     return { name: 'Vic', age: 21, id: 1 };
+// }
+
+// async function getInfo() {
+//     try {
+//       let user = await getUser();
+//       throw new Error('error from try Task 5');
+//     } catch (error) {
+//       console.log('Catch', error);
+//     };
+// };
+// getInfo();
 
 
 
